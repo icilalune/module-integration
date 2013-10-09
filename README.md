@@ -37,6 +37,19 @@ The provided `com.icilalune.api.module.SpriteModule` may act
 as a base class for your module, providing convenience methods
 to prepare initialization.
 
+Host Application Runtime
+------------------------
+
+The host application honor the following principles.
+
+The initialization method (`moduleInitialize()`) will always be
+called prior adding your module to the display list.
+
+Thus, listing to `Event.ADDED` or `Event.ADDED_TO_STAGE` event is
+sufficient to trigger startup of your module. Just detect in the
+callback if `moduleInitialize()` was called to switch between a
+"module" mode and a "standalone" mode.
+
 Platform Caveat
 ---------------
 
