@@ -44,9 +44,11 @@
       <url>http://maven.icilalune.com/fdk/4.10</url>
       <releases>
         <enabled>true</enabled>
+        <checksumPolicy>ignore</checksumPolicy>
       </releases>
       <snapshots>
         <enabled>false</enabled>
+        <checksumPolicy>ignore</checksumPolicy>
       </snapshots>
     </repository>
   </repositories>
@@ -57,9 +59,11 @@
       <url>http://maven.icilalune.com/fdk/4.10</url>
       <releases>
         <enabled>true</enabled>
+        <checksumPolicy>ignore</checksumPolicy>
       </releases>
       <snapshots>
         <enabled>false</enabled>
+        <checksumPolicy>ignore</checksumPolicy>
       </snapshots>
     </pluginRepository>
   </pluginRepositories>
