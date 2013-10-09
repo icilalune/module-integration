@@ -126,5 +126,18 @@ package com.icilalune.api.module {
     protected function handleModuleHostResize(event:ModuleHostEvent):void {
       handleResize();
     }
+
+    /**
+     * Resolve a resource URI through the module host.
+     *
+     * @param uri the resource URI
+     * @return the converted URI or the same URI if there is no resolver
+     */
+    protected function resolveURI(uri:String):String{
+      if(moduleHost && moduleHost.moduleResourceResolver){
+        return moduleHost.moduleResourceResolver.resolveURI(uri);
+      }
+      return uri;
+    }
   }
 }

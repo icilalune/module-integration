@@ -21,15 +21,12 @@ package com.icilalune.api.module {
     function get hostHeight():Number;
 
     /**
-     * Resolve a resource URI to a real host URI.
+     * Gets the URI resource resolver.
      * <p>
-     * Asks the module host to convert a context-independant URI to its actual
-     * context-dependant counterpart.
      *
-     * @param uri the source URI
-     * @return the actual loadable URI
+     * @return a resolver instance of null if the host does not provide one.
      */
-    function resolveURI(uri:String):String;
+    function get moduleResourceResolver():IModuleResourceResolver;
 
   }
 }
