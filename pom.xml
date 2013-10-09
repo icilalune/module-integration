@@ -15,10 +15,10 @@
 
   <dependencies>
     <dependency>
-      <groupId>com.adobe.flex.framework</groupId>
-      <artifactId>flex-framework</artifactId>
-      <version>${flex.sdk.version}</version>
-      <type>pom</type>
+      <groupId>com.adobe.flash.framework</groupId>
+      <artifactId>playerglobal</artifactId>
+      <version>11.1</version>
+      <type>swc</type>
     </dependency>
   </dependencies>
 
@@ -41,35 +41,4 @@
       </plugin>
     </plugins>
   </build>
-
-  <repositories>
-    <repository>
-      <id>fdk-410</id>
-      <url>http://maven.icilalune.com/fdk/4.10</url>
-      <releases>
-        <enabled>true</enabled>
-        <checksumPolicy>ignore</checksumPolicy>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-        <checksumPolicy>ignore</checksumPolicy>
-      </snapshots>
-    </repository>
-  </repositories>
-
-  <pluginRepositories>
-    <pluginRepository>
-      <id>fdk-410</id>
-      <url>http://maven.icilalune.com/fdk/4.10</url>
-      <releases>
-        <enabled>true</enabled>
-        <checksumPolicy>ignore</checksumPolicy>
-      </releases>
-      <snapshots>
-        <enabled>false</enabled>
-        <checksumPolicy>ignore</checksumPolicy>
-      </snapshots>
-    </pluginRepository>
-  </pluginRepositories>
-
 </project>
