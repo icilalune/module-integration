@@ -9,11 +9,15 @@
   <version>1.0-SNAPSHOT</version>
   <packaging>swc</packaging>
 
+  <properties>
+    <flex.sdk.version>4.10.0.20130801</flex.sdk.version>
+  </properties>
+
   <dependencies>
     <dependency>
       <groupId>com.adobe.flex.framework</groupId>
       <artifactId>flex-framework</artifactId>
-      <version>4.10.0.20130801</version>
+      <version>${flex.sdk.version}</version>
       <type>pom</type>
     </dependency>
   </dependencies>
@@ -30,7 +34,7 @@
           <dependency>
             <groupId>com.adobe.flex</groupId>
             <artifactId>compiler</artifactId>
-            <version>4.10.0.20130801</version>
+            <version>${flex.sdk.version}</version>
             <type>pom</type>
           </dependency>
         </dependencies>
