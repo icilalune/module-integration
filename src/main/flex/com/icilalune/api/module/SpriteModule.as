@@ -99,9 +99,11 @@ package com.icilalune.api.module {
      * Called when the instance is added to the display list.
      */
     protected function stageInitialize():void {
-      try {
-        stage.addEventListener(Event.RESIZE, handleStageResize);
-      } catch (e:Error) {
+      if (!moduleHost) {
+        try {
+          stage.addEventListener(Event.RESIZE, handleStageResize);
+        } catch (e:Error) {
+        }
       }
     }
 
