@@ -1,8 +1,4 @@
-package com.icilalune.api.module.impl {
-  import com.icilalune.api.module.IModule;
-  import com.icilalune.api.module.IModuleHost;
-  import com.icilalune.api.module.ModuleHostEvent;
-
+package com.icilalune.api.module {
   import flash.display.Sprite;
   import flash.events.Event;
 
@@ -18,33 +14,14 @@ package com.icilalune.api.module.impl {
      * Initialize a new SpriteModule
      */
     public function SpriteModule() {
-      if(stage){
+      if (stage) {
         stageInitialize();
-      }else{
-        addEventListener(Event.ADDED_TO_STAGE, function(e:Event):void{
+      } else {
+        addEventListener(Event.ADDED_TO_STAGE, function (e:Event):void {
           removeEventListener(Event.ADDED_TO_STAGE, arguments.callee);
           stageInitialize();
         });
       }
-    }
-
-    /**
-     * Called when the instance is added to the display list.
-     */
-    protected function stageInitialize():void {
-      try{
-        stage.addEventListener(Event.RESIZE, handleStageResize);
-      }catch(e:Error){
-      }
-    }
-
-    /**
-     * Handle stage's resize events.
-     * @param event the event object
-     */
-    protected function handleStageResize(event:Event):void {
-      _moduleWidth = stage.stageWidth;
-      _moduleHeight = stage.stageHeight;
     }
 
     /**
@@ -53,21 +30,26 @@ package com.icilalune.api.module.impl {
     protected var moduleHost:IModuleHost;
 
     /**
-     * Stores the actual module width
-     */
-    private var _moduleWidth:Number;
-
-    /**
      * Gets the actual module width.
      * <p>
      * This property is updated by the resize events coming either form the
      * stage or the module host if available.
      */
-    public function get moduleWidth():Number {
-      return _moduleWidth;
+    public function get actualWidth():Number {
+      if (moduleHost) {
+        return moduleHost.hostWidth;
+      } else {
+        try {
+          return stage.stageWidth;
+        } catch (e:Error) {
+        }
+      }
+      try {
+        return loaderInfo.width;
+      } catch (e:Error) {
+      }
+      return height;
     }
-
-    private var _moduleHeight:Number;
 
     /**
      * Gets the actual module height.
@@ -75,8 +57,20 @@ package com.icilalune.api.module.impl {
      * This property is updated by the resize events coming either form the
      * stage or the module host if available.
      */
-    public function get moduleHeight():Number {
-      return _moduleHeight;
+    public function get actualHeight():Number {
+      if (moduleHost) {
+        return moduleHost.hostHeight;
+      } else {
+        try {
+          return stage.stageHeight;
+        } catch (e:Error) {
+        }
+      }
+      try {
+        return loaderInfo.height;
+      } catch (e:Error) {
+      }
+      return height;
     }
 
     /**
@@ -102,12 +96,35 @@ package com.icilalune.api.module.impl {
     }
 
     /**
+     * Called when the instance is added to the display list.
+     */
+    protected function stageInitialize():void {
+      try {
+        stage.addEventListener(Event.RESIZE, handleStageResize);
+      } catch (e:Error) {
+      }
+    }
+
+    /**
+     * Invoked on resize.
+     */
+    protected function handleResize():void {
+    }
+
+    /**
+     * Handle stage's resize events.
+     * @param event the event object
+     */
+    protected function handleStageResize(event:Event):void {
+      handleResize();
+    }
+
+    /**
      * Handle host resize events.
      * @param event the event object
      */
     protected function handleModuleHostResize(event:ModuleHostEvent):void {
-      _moduleWidth = moduleHost.hostWidth;
-      _moduleHeight = moduleHost.hostHeight;
+      handleResize();
     }
   }
 }
