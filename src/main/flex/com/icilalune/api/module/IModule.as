@@ -12,7 +12,7 @@ package com.icilalune.api.module {
      *
      * @param host bridge to the host
      */
-    function moduleInitialize(moduleHost:IModuleHost):void;
+    function moduleInitialize(moduleHost:*):void;
 
     /**
      * Called by the host upon destruction.

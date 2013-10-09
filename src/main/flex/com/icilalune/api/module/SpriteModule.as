@@ -14,20 +14,16 @@ package com.icilalune.api.module {
      * Initialize a new SpriteModule
      */
     public function SpriteModule() {
-      if (stage) {
+      addEventListener(Event.ADDED_TO_STAGE, function (e:Event):void {
+        removeEventListener(Event.ADDED_TO_STAGE, arguments.callee);
         stageInitialize();
-      } else {
-        addEventListener(Event.ADDED_TO_STAGE, function (e:Event):void {
-          removeEventListener(Event.ADDED_TO_STAGE, arguments.callee);
-          stageInitialize();
-        });
-      }
+      });
     }
 
     /**
      * The current module host.
      */
-    protected var moduleHost:IModuleHost;
+    protected var moduleHost:*;
 
     /**
      * Gets the actual module width.
@@ -78,7 +74,7 @@ package com.icilalune.api.module {
      *
      * @param moduleHost the host application
      */
-    public function moduleInitialize(moduleHost:IModuleHost):void {
+    public function moduleInitialize(moduleHost:*):void {
       this.moduleHost = moduleHost;
       if (moduleHost) {
         moduleHost.addEventListener(ModuleHostEvent.RESIZE, handleModuleHostResize);
@@ -125,7 +121,7 @@ package com.icilalune.api.module {
      * Handle host resize events.
      * @param event the event object
      */
-    protected function handleModuleHostResize(event:ModuleHostEvent):void {
+    protected function handleModuleHostResize(event:Event):void {
       handleResize();
     }
 
