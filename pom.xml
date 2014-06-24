@@ -4,7 +4,7 @@
 
   <groupId>com.icilalune.api</groupId>
   <artifactId>module-integration</artifactId>
-  <version>0.1.0</version>
+  <version>0.1.1-SNAPSHOT</version>
   <packaging>swc</packaging>
 
   <properties>
@@ -18,7 +18,7 @@
     <developerConnection>
       scm:git:git@github.com:icilalune/module-integration.git
     </developerConnection>
-    <tag>v0.1.0</tag>
+    <tag>HEAD</tag>
   </scm>
 
   <dependencies>
