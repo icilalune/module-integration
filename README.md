@@ -33,6 +33,11 @@ URI representation in your data models, such as custom schemes,
 and ask the host application to translate it to its actual
 representation (real scheme such as file:// or http://).
 
+Note: You should not cast those objects in your module. See
+the Caveats section below. Those interfaces are provided as
+documentation purpose only. They are meant to be used on 
+the host side only.
+
 The provided `com.icilalune.api.module.SpriteModule` may act
 as a base class for your module, providing convenience methods
 to prepare initialization.
@@ -50,23 +55,19 @@ sufficient to trigger startup of your module. Just detect in the
 callback if `moduleInitialize()` was called to switch between a
 "module" mode and a "standalone" mode.
 
-Platform Caveat
----------------
+Platform Caveats
+----------------
 
-Please note that this API is heavily based on strongly typed
-object and need that its interfaces definitions are shared
-between the host application and the plugin.
+The Adobe Flash Platform has some caveats when it comes to 
+dynamic code loading. Please take a look to Adobe Flash Platform 
+documentation.
 
-It basically means that your SWF module and the host application
-have to share the same `ApplicationDomain` or be part of linked
-`ApplicationDomain`s
+Long story short : it is advised to treat every reference to
+objects retrieved form the host, such as the moduleHost object or
+the URL resolver as plain untyped Object classes as class 
+definitions may not be shared between module and host, depending
+on the loading settings. If the module is loaded in a child or
+sibling ApplicationDomain, there's a high probability of any
+attempt to cast such objects results to null-references.
 
-Please take a look to Adobe Flash Platform documentation regarding
-dynamic code loading.
 
-You could be able to provide module that works with the host
-application by providing the exact interface method, without any
-strong typing for the argument (use `*` instead). For this
-kind of implementation to work, the host application also have
-to invoke your methods dynamically, without casting the main
-instance to `IModule`.
