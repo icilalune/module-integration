@@ -4,6 +4,9 @@ package com.icilalune.api.module {
   /**
    * Event fired by IModuleHost objects.
    * <p>
+   * You should not cast events received from the host as it may results
+   * in a null value. See Caveats section in the README file.
+   *
    * @see IModuleHost
    */
   public class ModuleHostEvent extends Event {

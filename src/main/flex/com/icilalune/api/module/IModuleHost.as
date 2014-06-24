@@ -6,6 +6,12 @@ package com.icilalune.api.module {
    * <p>
    * This interface allows a module to access host application properties and
    * events such as the screen size the module can use.
+   * <p>
+   * Please note that you should not cast moduleHost instances received from
+   * the host as it may results in a null value. See Caveats section in the
+   * README file.
+   *
+   * @see ModuleHostWrapper
    */
   [Event(type="com.icilalune.api.module.ModuleHostEvent", name="resize")]
   public interface IModuleHost extends IEventDispatcher{

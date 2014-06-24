@@ -23,7 +23,7 @@ package com.icilalune.api.module {
     /**
      * The current module host.
      */
-    protected var moduleHost:*;
+    protected var moduleHost:IModuleHost;
 
     /**
      * Gets the actual module width.
@@ -75,7 +75,7 @@ package com.icilalune.api.module {
      * @param moduleHost the host application
      */
     public function moduleInitialize(moduleHost:*):void {
-      this.moduleHost = moduleHost;
+      this.moduleHost = new ModuleHostWrapper(moduleHost);
       if (moduleHost) {
         moduleHost.addEventListener(ModuleHostEvent.RESIZE, handleModuleHostResize);
       }
