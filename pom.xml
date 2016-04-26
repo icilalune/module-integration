@@ -4,12 +4,8 @@
 
   <groupId>com.icilalune.api</groupId>
   <artifactId>module-integration</artifactId>
-  <version>0.1.1-SNAPSHOT</version>
+  <version>0.2.0-SNAPSHOT</version>
   <packaging>swc</packaging>
-
-  <properties>
-    <flex.sdk.version>4.10.0.20130801</flex.sdk.version>
-  </properties>
 
   <scm>
     <connection>scm:git:git@github.com:icilalune/module-integration.git
@@ -25,7 +21,7 @@
     <dependency>
       <groupId>com.adobe.flash.framework</groupId>
       <artifactId>playerglobal</artifactId>
-      <version>11.1</version>
+      <version>20.0</version>
       <type>swc</type>
     </dependency>
   </dependencies>
@@ -36,22 +32,35 @@
       <plugin>
         <groupId>net.flexmojos.oss</groupId>
         <artifactId>flexmojos-maven-plugin</artifactId>
-        <version>6.0.1</version>
         <extensions>true</extensions>
-        <dependencies>
-          <dependency>
-            <groupId>com.adobe.flex</groupId>
-            <artifactId>compiler</artifactId>
-            <version>${flex.sdk.version}</version>
-            <type>pom</type>
-          </dependency>
-        </dependencies>
       </plugin>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
-        <version>2.5</version>
       </plugin>
     </plugins>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>net.flexmojos.oss</groupId>
+          <artifactId>flexmojos-maven-plugin</artifactId>
+          <extensions>true</extensions>
+          <version>7.1.0</version>
+          <dependencies>
+            <dependency>
+              <groupId>org.apache.flex</groupId>
+              <artifactId>compiler</artifactId>
+              <version>4.15.0</version>
+              <type>pom</type>
+            </dependency>
+          </dependencies>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.5</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
   </build>
 </project>
